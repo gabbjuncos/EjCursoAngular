@@ -18,4 +18,17 @@ typescript traduce lo codificado a javascript para ejecutarse en el navegador
 type script toma todos los archivos y genera solo uno, entonces si una variable esta en un archivo, en otro puede
 decir que ya existe , nos dice eso en el editor
 pero si no se usa type script, el error se estaria dando en el navegador
+__________
+3.4
+
+hay que evitar usar el any por que se refiere a que se puede agregar cualquier tipo de dato
+
+let habilidades: any[]
+
+las interfaces no existen en java script es de type script, cuando se traspila el codigo, en el nageador no van a figurar 
+el codigo de las interfaces
+
+_____________
+
+3.5
 
