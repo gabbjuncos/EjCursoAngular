@@ -1,0 +1,21 @@
+https://github.com/Klerith/curso-angular-intro-typescript-ecmascript/releases/tag/v1.0.1
+
+github.com/Klerith/curso-angular-intro-typescript-ecmascript
+
+npm install para que instale las dependencias que necesita para funcionar el proyecto
+
+npm start para levantar le servidor
+
+---------- 
+3.3
+
+link pagina 
+https://www.typescriptlang.org/
+typescripttlang.org/docs/handbook/basic-types.html
+
+typescript traduce lo codificado a javascript para ejecutarse en el navegador
+
+type script toma todos los archivos y genera solo uno, entonces si una variable esta en un archivo, en otro puede
+decir que ya existe , nos dice eso en el editor
+pero si no se usa type script, el error se estaria dando en el navegador
+
