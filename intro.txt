@@ -1,0 +1,14 @@
+Angular CLI
+significa comand line interface, esto nos habilita que podamos disparar ciertos comandos de angular en la terminarl
+o consola 
+
+-g intalasr de manera global, en cualquier carpeta voy a poder ejecutar los comandos
+se tiene que dar permisos para instalar 
+
+npm install -g @angular/cli
+
+nos va a ayudar a generar componentes, directivas , servicios etc
+
+para ver si esta correctamente instalado 
+
+ng --version

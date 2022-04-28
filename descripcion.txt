@@ -1,0 +1,5 @@
+para instalar
+https://gist.github.com/Klerith/607dd6bb60b5a70bc5e4d9c81ef6501e
+
+git config --global user.name "Tu nombre"
+git config --global user.email "Tu correo"
