@@ -12,3 +12,6 @@ nos va a ayudar a generar componentes, directivas , servicios etc
 para ver si esta correctamente instalado 
 
 ng --version
+
+ir hasta la carpeta del proyecto donde esta npm
+npm start
