@@ -7,3 +7,59 @@ git config --global user.email "Tu correo"
 git config --global --unset user.email
 
 git config --global --list
+
+
+crear nuevo proyecto angular
+
+ng new nombreProyecto
+
+ir a la carpea del proyecto y tiene que tener el archivo packege.json
+
+si ejecutamos 
+
+ng serve -o 
+
+se toma todo el codigo, lo transpila a java script, monta un servidor mediante webpack y si ponemos -o le dice que
+lo abra tan pronto este disponible, hace la traduccion en ecma script
+
+en la carpeta del proyecto angular
+
+el archivo tslint.json obliga a programar de cierta manera, el ts es de typescript
+
+el tsconfig.json es de confiracion de typescript, le dice como quiere que se traduzca
+a java scripts
+
+el tsconfig.spec.json extiende del tsconfig.json
+toma lo que tiene tsconfig.json y le añade caracteristicas 
+el punto spec esta relacionado a la parte de las pruebas
+pruebas unitarias o de integracion
+
+tsconfig.app.json mas enfocado a la programacion de la aplicacion
+
+package.json archivo delicado y no se deberia hacer modificaciones manualmente
+eliminar cosas se hace por comando, no tocar este archivo
+
+el package-lock.json tampoco se suele modificar, solo por consola y dice
+dice basicamente como se construyo los modulos de node y todo
+
+el  karma.conf.js es para las pruebas de integracion basados en karma
+
+angular.json
+configuraciones importantes para la aplicacion
+src/favicon carga el icono
+src/assets carga los recursos estaticos
+
+src/styles
+cuando se compile inyecta en el html
+
+gitingnore archivos que no quiere que git haga seguimiento del proyecto
+
+el .browserslistrc
+es para lista las  versiones de los navegadores para compatibilidad del proyecto
+
+em la carpeta node_modules
+tenemos modelus que van a ir a prodcuccion y otros no
+
+e2e es para pruebas detesting
+
+el angular cli cofngura para hacer pruebas e2e,karma, postractor
