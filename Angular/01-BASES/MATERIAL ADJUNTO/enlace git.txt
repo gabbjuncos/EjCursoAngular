@@ -1,0 +1,25 @@
+https://gist.github.com/Klerith/
+
+https://gist.github.com/Klerith/3ddee04a27c09be05e888d5d4ac1d09f
+
+se pega el css
+en el archivo styles css
+
+del decorador @component 
+el selector es el nombre del componente que va a tener, en este caso app-root
+
+si lo vemos en el index html vemos el app-root
+es el nombre del componente que muestra
+
+y tambien le tenemos que especificar si tiene componente html
+y es el atributo template
+con el template url se especifica la ruta del archivo html
+como esta en el mismo directorio se lo puede especifciar directamente con el nombre
+del archivo html
+
+y colocanto template se coloca el codigo html que quiero, ignorando el archivo html
+
+con el {{}} indicamos la propiedad que queremos mostrar en el html del component
+en el archivo componentes ts se puede especificar el tipo y la visibilidad public
+
+tambien en los {{ 2+2 }} se puede colocar expresion java script 
