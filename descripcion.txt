@@ -4,7 +4,8 @@ https://gist.github.com/Klerith/607dd6bb60b5a70bc5e4d9c81ef6501e
 git config --global user.name "Tu nombre"
 git config --global user.email "Tu correo"
 
-git config --global --unset user.email
+para cerrar sesion
+git config --global --unset user.email "colocar email"
 
 git config --global --list
 
@@ -63,3 +64,11 @@ tenemos modelus que van a ir a prodcuccion y otros no
 e2e es para pruebas detesting
 
 el angular cli cofngura para hacer pruebas e2e,karma, postractor
+
+
+PARA DEFINIR VARIABLES DE PRODUCCION EN EL ARCHIVO
+enviroment.prod.ts y de desarrollo en enviroment.ts
+
+el css styles.css de environments se aplica css a nivel general
+pero si tocamos el que tiene asociado cada componente solo se aplica ese 
+

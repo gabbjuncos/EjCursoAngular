@@ -1,0 +1,20 @@
+en el archivo app.componenet.ts en la clase defino propiedades
+y luego en el html correspodniente puedeo llamarla con doble llaves {{nombrePropiedad}}
+
+no se debe poner logica en el html, sino va en el components, ahi se debe hacer todo el tranajo
+
+this en el componente para hacer referencia a la propiedad de la clase
+
+
+se define el metodo en componente y se llama en el html
+se puede llamar el metodo desde el html
+
+el nombre del selector es lo que ponenemos en el html para que se muestre 
+
+en el archivo moduel
+en la parte de @NgModuel
+van los componentes que se estan utilizando
+
+en el template html componenete
+puedo agregar varias instancias del componente
+llamando varias veces al selector
