@@ -8,4 +8,22 @@ export class HeroeComponent{
     nombre: string = "Ironman";
     edad  : number = 45
 
+    // se manda a llamar solo por el nombre por que es get
+    // cuando sale de color violeta es una funcio y cuando sale de color azul es get
+    get nombreCapitalizado(): string{
+        return this.nombre.toUpperCase();
+    }
+
+    obtenerNombre(): string{
+        return `${ this.nombre } - ${ this.edad }`;
+    }
+
+    cambiarNombre():void{
+        this.nombre = 'Spiderman';
+    }
+
+    cambiarEdad():void{
+        this.edad = 30;
+    }
+
 }

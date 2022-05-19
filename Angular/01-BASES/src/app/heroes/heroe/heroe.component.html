@@ -4,5 +4,19 @@
     <dd> {{nombre}}</dd>
     <td> Edad: </td>
     <dd> {{edad}}</dd>
+    <td> Funcion: </td>
+    <dd> {{obtenerNombre()}}</dd>
+    <td> Capitalizado: </td>
+    <dd> {{nombre.toUpperCase()}}</dd>
+    <td> Capitalizado desde component ts: </td>
+    <dd> {{nombreCapitalizado}}</dd>
 
 </dl>
+
+<button (click)="cambiarNombre()">
+    Cambiar Heroe
+</button>
+
+<button (click)="cambiarEdad()">
+    Cambiar edad
+</button>
