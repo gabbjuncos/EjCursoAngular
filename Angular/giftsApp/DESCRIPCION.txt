@@ -1,0 +1,91 @@
+para crear un nuevo proyecto
+
+ng new nombreProyecto
+
+pergunta 2 cosas, primera es para que sea mas estricto angular con tema de type script
+que si si
+
+segundo es el routing se le da no, para hacerlo a mano
+
+se va a utilziar bootstrap
+
+https://getbootstrap.com/
+
+se agrega en el index el link
+
+diseño de la pantalla html
+
+con la clase d-flex habilita para poner elenetos uno al lado del otro
+
+class bg-dark border-right p-3, para que sea fondo oscuro, para uqe tenga borde a la derecha
+
+en el style.css se define algunas propeidades para el html
+
+#sidebar estamos haciendo referencia por id del html
+para que ocupe como minimo toda la pantalla
+el obj del sidebar es para mantener un historial de las busquedas que se tenga
+
+list group
+y se hace un href=# para que no navegue a ningun lado
+
+con la clase list grupo item
+hace le efecto de tarjeta
+
+__________
+
+para crear un modulo llamado shared
+
+ng g m shared
+
+cero en component sidebar en la carpeta shared
+
+ng g c shared/sidebar
+
+luego en el modulo shared tengo que exportar el componente sidebar compoenten
+agrego 
+
+exports:[
+    SidebarComponent
+  ],
+
+y en el app moduel solo importo en modulo sharedModule y no el sidebar component
+
+__________
+
+ahora se va a separadr la logica de los gifts en un modulo aparte
+ng g m gifts
+
+y agregarlo al module app
+
+ahora se crear el component gifsPage en la carpeta gifs
+
+y ahora se llama al componente gifs en el moduel
+y en el module se lo exporta
+
+ahora en el html del app componente se va a llamar a lo correspondiente al container
+y se envia esas linea html al html correspondiente al modulo gifspage
+
+la clase mas general del html el container se la puede asiganar en el html app component
+
+_________
+
+ahora puedo pensar lo que es la busqueda como otro componente
+y lo que es resultado en otro componente
+
+
+creo componente asociado a la busqueda
+con las 2 opciones agregas no crea el archivo para prueba ni para el estilo independiente
+ng g c gifs/busqueda --skipTests -is
+
+y para los resultados
+
+ng g c gifs/resultados --skipTests -is
+
+en este caso no hace falta exportar los componentes ya que no hace falta
+usar los componentes busqueda y resutldo fuera del component gifs
+
+__________
+
+para recibir lo que se escribe en el buscador 
+pasamos como parametos el $event y en la definicion de la funcion tambien tiene que estar
+
