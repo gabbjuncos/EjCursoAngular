@@ -89,3 +89,124 @@ __________
 para recibir lo que se escribe en el buscador 
 pasamos como parametos el $event y en la definicion de la funcion tambien tiene que estar
 
+podemos hacer una referencia local en el html #txtBuscar
+
+
+utilizar decorador @ViewChild para ver que en este caso se pueda
+recibir lo que se escribe en el buscador
+
+y colocamos en parentesis el argumento de que quiero, puede
+se por type, por class del html
+
+y poniendo el console para mostrar el txtBuscar del html
+muestra el native element el txtbuscar y podemos ver el tipo para ponerlo
+en la funcion
+
+el txtBuscar sale como error porque aun cuando el #txtBsucar del html 
+este siempre, pero valer null
+
+pero si le aggreog en el ts el ! le estoy diciendo que siempre va a estar
+ese elemento, o algo asi es la explicacion txtBuscar!
+
+ese operacodr es para asegurarse de que ese obj no va a ser null
+
+documentacion para ver el operador este !
+typescript non null assertion operator
+
+y para poder decirle el tipo que es para que tenga otdos los metodos input
+tengo que decir al ElementRef<HTMLInputElement> su tipo
+porque por defecto es del tipo any y no va a tener todos los metodos input
+
+ahora en el buscador, se escribe y si se presiona enter se borra
+el contenido y lo muestra
+
+de esta forma se usa el viewchild
+_____________
+
+para crear un servicio y que no cree el archivo de pruebas
+
+ng g s gifs/services/gifs --skipTests
+
+el providedIn: root
+que se agrega al service es para que se creen los servicios cuando se 
+crea el bundle
+
+significa que no importa donde este, este servicio va a ser unico y va a 
+estar creado y no tengo que especificarlo en el module, en los providers
+al estar en root va a ser global
+
+en le metodo historial
+se rompe la referencia con el operador spred ...this._historial
+porque puede ser que se modifique ese array _hisorial por eso se rompe
+
+luego para utilizar el metodo
+hay que inyectarlo, agregandolo como parametro al constructor del componente
+donde quiero usar el servicio busqueda ts
+
+ahora hay conusmir desde el servicio, el arreglo con el historial
+
+desde el componente sidebar se define un metodo getsidebar para consumir el servicio
+y mostrarlo en el html de sidebar con un ngfor llamando al historial
+
+EN EL SERVICE SE CONTROLA QUE NO SI INGRESE LO MISMO PERO EN MINUSCULA O MAYUSCULA
+Y NO SEAN CON ESPACIOS EN BLANCOS
+
+para que se muestre capitalizado, se usa pipe | en el html correspondiente
+los pipes solo lo manipulan en forma visual en el template, pero no hacen
+modifiaciones a la data
+
+el pipe va en el html
+
+el capitalizar  con titlecase es para que a la palabras las muestre empezando con mayuscula
+
+____________________
+
+TRAER LAS IMAGENES DESDE LA PAGINA 
+developers.giphy.com por medio de su api
+
+en el service seria mejor almacenar el api key
+
+para probar la api usamos postman
+para probasr servicios rest
+
+http://api.giphy.com/v1/gifs/search  + ?api_key=  +  "la cadena api" 
+
+http://api.giphy.com/v1/gifs/search?api_key=sSfKcYCTU2qKwmqgg83ECg7echhFah9e
+
+y contesta con 200 OK
+
+http://api.giphy.com/v1/gifs/search  + ?api_key=  +  "la cadena api" + 
+y por post man le podemos dar los parametros
+en value esscrimos y nos va armando la url
+le ponemos un nombre al parametro que es lo mismo de la doc de la api
+y en value su valor 
+
+http://api.giphy.com/v1/gifs/search?api_key=sSfKcYCTU2qKwmqgg83ECg7echhFah9e&q=dragon ball z
+
+otro parametro el limit se agrega en la columna query y el valor que quiero
+para darle un limite de 10
+
+https://giphy.com/gifs/TOEIAnimationUK-dbz-dragon-ball-z-GRSnxyhJnPsaQy9YLn?limit=10
+
+vamos a usar el obj que trae angular para hacer la conexxion http
+
+imporatmos el modulo en el app.moduel para que este de manera global
+si tiene la palabra modulo lo que importamos, vamos a importarlo en 
+imports
+import {HttpClientModule} from '@angular/common/http'
+
+ahora en el service vamos a inyectarlo como parametro del contructor
+
+como obj del tipo httpClient
+
+con esa inyecion ya se puede hacer prticiones, http , post put delete get
+con la diferencia de que va a trabajar en base a observables, son mas
+poderosos que las promesas 
+
+con http.get y pasamos la url
+y en vez del then, se ejecuta el suscribe, es parecido
+el suscribe se va a ejecutar cuando tengamos respuesta
+
+el modulo http nos ofrece varias cosas por eso no usa
+
+https://developers.giphy.com/docs/api/endpoint#search
