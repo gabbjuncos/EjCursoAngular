@@ -8,7 +8,7 @@ export class GifsService {
 
   private apikey: string = 'sSfKcYCTU2qKwmqgg83ECg7echhFah9e';
   private _historial: string[] = [];
-
+  public resultados: any[] = [];
   get historial(){
     return [...this._historial]
   }
@@ -27,10 +27,11 @@ export class GifsService {
       this._historial = this._historial.splice(0,10);
     }
 
-    this.http.get('https://giphy.com/gifs/TOEIAnimationUK-dbz-dragon-ball-z-GRSnxyhJnPsaQy9YLn?limit=10')
+    this.http.get(`http://api.giphy.com/v1/gifs/search?api_key=sSfKcYCTU2qKwmqgg83ECg7echhFah9e&q=${query}&limit=10`)
     //hay que decir el tipo porque type script va a seber recien cuando tiene respuesque tipo es asi que le pongo tipo any porque lo unico que em eimporta es que se lo que va a dveolver 
     .subscribe(( resp:any ) => {
-      console.log(resp);
+      console.log(resp.data);
+      this.resultados = resp.data;
     });
 
     //console.log(this._historial)

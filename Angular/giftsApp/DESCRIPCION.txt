@@ -210,3 +210,49 @@ el suscribe se va a ejecutar cuando tengamos respuesta
 el modulo http nos ofrece varias cosas por eso no usa
 
 https://developers.giphy.com/docs/api/endpoint#search
+
+____________________
+
+usar back ticks ``
+para armar la url
+http://api.giphy.com/v1/gifs/search?api_key=sSfKcYCTU2qKwmqgg83ECg7echhFah9e&q=dragon ball z&limit=10
+
+entre parentesis re reemplaa por el contenido para que lo tome
+${query}
+
+y el contenido se lo almacena en un arreglo public porque no importa
+quien acceso
+
+la propiedad resultados tiene los ultimos 10 valores
+y se los pasa al componente resultados
+
+se inyecta en el componente resultados el servicio,  ingresandolo en el 
+constructor
+
+se podria poner publico en el constructor de resultados y acceder por el html
+con la referencia del parametro
+
+y el en html de resultaods
+se hace un ngFor para llamarlo
+
+lo que muestra se ve todas la propiedades que tiene 
+
+para mostrar la imagen es la propiedad imagene downsized_medium y su url
+al no tener tipado tengo que asegurarme que ese tipado venga
+
+se obtiene la url y luego se la pasa como parametro a la etiqueta
+html img
+
+y si quiero el valor producto de la url osea la busqueda
+tengo que indicarlo con corchetes [src]
+
+el alt seria para que vea otra cosa en caso que no pueda ver la imagen
+
+class ="card-img-top"
+es una clase de bootstrap para mostrar imagenes
+
+falta reemplzar los any del service por el tipado correspondiente
+por que no se tiene los metodos con la ayuda
+y es dificil saber que tipo venia antes
+siempre usar tipado
+
