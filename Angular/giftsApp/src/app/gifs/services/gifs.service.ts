@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SearchGifsResponse, Gif } from '../interface/gifs.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,24 @@ export class GifsService {
 
   private apikey: string = 'sSfKcYCTU2qKwmqgg83ECg7echhFah9e';
   private _historial: string[] = [];
-  public resultados: any[] = [];
+  public resultados: Gif[] = [];
   get historial(){
     return [...this._historial]
   }
   
-  constructor(private http:HttpClient){}
+  constructor(private http:HttpClient){
+
+    // tomamos el listado, puede retornar string o null
+    //localStorage.getItem('historial');
+    
+    if(localStorage.getItem('historial')){
+      this._historial = JSON.parse(localStorage.getItem('historial')!);
+      this.resultados = JSON.parse(localStorage.getItem('resultados')!);
+    }
+
+    // otra forma para que devuelva un arreglo vacio
+    this._historial = JSON.parse(localStorage.getItem('historial')!) || []
+  }
 
   // insertar valores al historial, para que siempre reciba como parametro algo
   buscarGifs( query:string = ''){
@@ -25,13 +38,17 @@ export class GifsService {
       this._historial.unshift(query);
       // para mostrar solo los utlimos 10 
       this._historial = this._historial.splice(0,10);
+      // para guardar historial en local storage, dandole de nombre historial y pasandole la query
+      localStorage.setItem('historial',JSON.stringify(this._historial));
     }
 
-    this.http.get(`http://api.giphy.com/v1/gifs/search?api_key=sSfKcYCTU2qKwmqgg83ECg7echhFah9e&q=${query}&limit=10`)
+    this.http.get<SearchGifsResponse>(`http://api.giphy.com/v1/gifs/search?api_key=sSfKcYCTU2qKwmqgg83ECg7echhFah9e&q=${query}&limit=10`)
     //hay que decir el tipo porque type script va a seber recien cuando tiene respuesque tipo es asi que le pongo tipo any porque lo unico que em eimporta es que se lo que va a dveolver 
-    .subscribe(( resp:any ) => {
+    .subscribe(( resp ) => {
       console.log(resp.data);
       this.resultados = resp.data;
+      // se guardan los resultados de la ultima busqueda
+      localStorage.setItem('resultados',JSON.stringify(this.resultados));
     });
 
     //console.log(this._historial)

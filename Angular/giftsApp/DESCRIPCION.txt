@@ -256,3 +256,87 @@ por que no se tiene los metodos con la ayuda
 y es dificil saber que tipo venia antes
 siempre usar tipado
 
+____________________
+
+a partir del json de la consulta con postman podemos ir a la pagina 
+quicktype.io
+
+pegar la respuesta postman del lado izquierdo, darle un nombre, typo jason
+del lado derecho en opcion y elegir typescript, copiar ese codig, trasnforma
+el json en type script, se copia y pega completamente toda la respues json
+
+y creamos una carpeta interface para pegarlo ahi 
+y creamosel archivo gifs.interface.ts
+
+y nos genera todas las interfaces necesarias
+
+en el archicho gfs.inteface
+
+entonces ahora en el service gifs se puede poner el tipo SearchGifResponse
+y lo recomendable es poner el tipo en el get<SearchGifsResponse>
+y lo que decimos es la respuesta del get luce como esta interfaz
+
+y ahora cuando escribamos resp. vamos a tener los metodos 
+la paginacion, data, etc , ahora no necesito saberme esa inforamcion de antemano
+
+resp.data[0].images.downsized_medium.url
+tambien en service podemos cambiar el tipo
+en el arreglo resultados podemos decir que es un arreglo del tipo Gif
+
+que vendria a ser la data que trae la consulta get
+
+y las propiedades que llamos desde el html al gifs no ahce falta memorizalo
+ya me va ayudando el intelinge
+
+_____________
+
+para guardar en el local storage
+
+y como no guarda objetos, puedo guardarlos en json pasandolos a string los historiales
+localStorage.setItem('historial',JSON.stringify(this._historial))
+hasta aca lo tendria almacenado en el local historage pero no lo muestra
+en el sidebar
+
+como los servicios se ejecutan como singletosn se ejecutan una vez
+y en constructor del servicio
+
+se hace lo inverso al stringify para convertir el obj a string
+esto lo pasa a json , para que no de error y se le pone le ! 
+para que no se ponga estricto type script
+
+como el ._historial = JSON.parse( local.Storage.getItem('historial')! )
+
+otra forma
+this._historial = JSON.parse(localStorage.getItem('historial')!);
+
+y se puede borrar desde el navegador el local storage
+
+guardamos los resultados en el local storage de la ultima busqueda
+
+localStorage.setItem('resultados',JSON.stringify(this.resultados));
+
+y para mostrar las imagenes del ultimo resutlado de busqueda
+siempre
+en el constructor del service 
+se lo muestra 
+
+_____________________________________
+
+LO QUE QUIERO HACER AHORA ES cuando se hace click en alguna de las opciones
+del historial se escriba en el buscador y volver a hacer esa busqueda
+
+se llama el metodo dsede service 
+pero en sidebar pasandole como parametro el item
+en el gtml sidebar
+
+
+
+
+
+
+
+
+
+
+
+
