@@ -329,12 +329,52 @@ se llama el metodo dsede service
 pero en sidebar pasandole como parametro el item
 en el gtml sidebar
 
+________________________
+
+MEJORAR LA URL endpoint
+ya que si quisiera cambiar el limite de gifs a consultar seria complicado
+por ejemplo
 
 
+la idesa seria crear la url como sale en postman
+osea con el key y los valores
+
+importar HttpParams me va a permitir crear los parametros como lo hace 
+post man
+
+ver que va el parametor y luego el valor
+
+toda la primera parte de la url podria ser una base porque seria todo igual
+cuando quiera llamar a esa api 
+
+servicioUrl
+
+y luego se construiria toda esa url
+
+base + endpoint que quiero llamar que seria el search
+y mandamos los valores de params
+
+this.http.get<SearchGifsResponse>(`${this.servicioUrl}/search`,{params:params})
+
+___________
+
+PARA DARLE UN POCO DE ANIMACION CUANDO APARECEN LAS IMAGENES DESPUES DE UNA 
+BUSQUEDA
+
+animate.style
 
 
+cdn es para enlace por distribucion de contendio 
+pegando el link
 
+luego en el html component se colocaca la clase
+en el ngfor como clase lo coloca
 
+cambiando el bound por el fadeIn
+
+y se le puede concatenear otras animaciones
+
+trae varias para ver en la pagina
 
 
 
