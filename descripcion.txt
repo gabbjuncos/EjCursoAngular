@@ -9,7 +9,23 @@ git config --global --unset user.email "colocar email"
 
 git config --global --list
 
+hacer clone de un tag
+git clone --depth 1 --branch <tag_name> <repo_url>
+ej git clone --depth 1 --branch 0.37.2 https://github.com/apache/incubator-superset.git
 
+para el error al hacer git add . 
+
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in 
+
+- se puede consultar que configuracion tiene con
+
+git config core.autocrlf
+
+necesito quediga en true
+
+- git config --global core.autocrlf true
+_______________________________________________
 crear nuevo proyecto angular
 
 ng new nombreProyecto
@@ -71,4 +87,355 @@ enviroment.prod.ts y de desarrollo en enviroment.ts
 
 el css styles.css de environments se aplica css a nivel general
 pero si tocamos el que tiene asociado cada componente solo se aplica ese 
+
+-----------------------------------------------------
+
+- para crear componente de manera automatica
+y se coloca la path donde lo genero
+
+ng generate component heroes/listado
+ng g c heroes/listado
+
+crea los archiva css, html, spec para archivo de pruebas y el ts
+
+y si agrego el app-listado en app.component html puedo ver el componente ejecutandose
+
+se crea por defecto cuando se hace automatico el ngOnInit
+se usa para inicializar cosas 
+ej peticion a algun servicio
+y el constructor se ejecutan antes de renderizar
+
+
+para mostrar una lista de elementos del component ts en el html component 
+se usan directivas estructurales o manipular el dom de manera muy facil
+
+*ngFor parecido al for
+"let heroe(variable) of heroes(la variable que tengo en el component ts)"
+
+y tambien podemos pedir el index si lo necesitamos con let i = index
+
+
+directiva estructural *ngIf
+si pongo el ngIf = "false" en un div, va a aparecer todo ese bloque cuando sea true
+
+para saber si es distinto de string vacio se puede poner solo el nombre la la variable
+porque es bastante inteligente para saber si es '' falta undefined null
+
+___________________
+
+para meter un else, se hace una referencia local
+
+directiva ng-template propia de angular que no tiene contraparte en html
+
+en las declarations del modulo se agregan todos los componentes que tiene ese modulo
+y tambien se ponen las cosas que quiero que sean visibles afuera de este modulo
+por ejemplo tambien componentes
+tambien imports que son las cosas que se importan, el browser moduel no hace falta volverlo a importar
+importammos el CommonModule que sirve para
+
+borrar los modulos importado y en la NgModule del modulo principal app.module.ts
+
+ahora solo no se volveria a tocar el app.moduele.ts
+se separa todo en modulos y se llama en una sola linea no habria que cambiar mucho
+el app.module.ts
+
+si se usa en *Ng hay que importar CommonModuel
+herores module
+
+en sintesis se crean losdirectorios y ahi adentor se crea un modulo
+y ese moduelo se lo llama en el app.module ne la secccion de ngModule en imports
+
+_______
+
+PARA RECONSTRUIR UN PROYECTO ANGULAR DESCARGADO DE GIT
+no se agrega los modulos de node js
+
+porque esta todo en packege.json y se ejecuta el comando npm installa 
+para reconstruir el proyecto
+
+_______
+
+PARA CREAR UN MODULO NUEVO AUTOMATICO
+dentro de la carpeta del proyecto donde esta el packege
+crea una carpeta dbx con un modulo llamado dbz
+
+ng g m dbz
+
+ahora se crear un componente dentro de la carpeta dbz
+
+ng g c dbz/mainPage
+
+al crear el componente y en esa carpeta recde  un modulo modifica el modulo y lo agrega 
+en el ng module en la parte de declaration
+
+y tengo que exportarlo al mainpagecomponente en una seccion exports del modulo
+
+cuando se agrega modulo siempre cortar la ejecucion del servidor y volverlo a correr
+
+se hace listas en el mainpage component html
+y se agrega estilos en el archivo style.css general 
+las clases .row y .col para que esten pegadas por medio de css
+
+para tomar los datos del formulario no ahce falta hacer un refresco de pantalla
+con angular ya se puede trabajar con esos datos sin hacer el refresco
+
+los parentesis (click) en el html signifca que esta escuchando un evento
+por ejemplo el boton 
+
+se define el metodo en el componente ts de main page
+agregar()
+
+y se lo llama en el html en el form
+
+se produce un refresh
+la idea es sacarlo
+si se le agrega al argumento $event (quiero ese evento que esta disparando el evento )
+en el agregar del html se refiere a que interesa recibir todo el evento del formulario que se esta disparando
+si estuviera en el button manda la info de todo el evento del boton que se esta disparando, como las cordenadas donde se hixo click con el boton
+, donde se encuentra  fisicamente el boton
+
+y se lo pone como arguemnto en la funcion del componete ts donde se define el evento
+<form (submit)="agregar($event)">
+            <input type="text" placeholder="Nombre"/>
+            <input type="number" placeholder="Poder"/>
+            <button type="submit">
+                Agregar
+            </button>
+        </form>
+
+y en el component
+
+agregar( event:any ){
+      event.preventDefault();
+      console.log("HEYY!!")
+    }
+
+para que no se haga el refresco
+pero angular permite hacerlo de una mejor manera sin escribir el default prevent
+
+
+para controlar este refreco hay que importar en el module 
+el modulo FormsModule dbz module 
+este es el general pero tambien estan los formularios reactivos
+
+y se coloca en el form del html el evento ngSubmit para que no se haga el refresh personalizado
+
+
+se crea el obj en la clase del mainpagecomponent, si definimos la interface
+antes angular ayuda para no cometer errores al crear la instancia del obj
+
+y para ponerlo por defecto, en el html hay con la palabra value hacemos
+referencia al contenido del input y le podemos dar un valor
+pero con [value] hacemos referencia a que le queremos pasar algun valor definido
+del component ts 
+
+[value] = "nuevo.nombre"
+
+si yo escibor en la caja de texto y le dony en agregar 
+no se cambia nada viendolo por el consolle.log si lo inspecciono 
+es el consepto de one way data bindig
+
+solo estamos modificando visualemnte
+
+ahora para cambiar el valor de nombre del obj personaje
+llama al metodo cambiar 
+(input)= "cambiarNombre($event)"
+y en el metodo de component se hace el cambio
+
+pero hay otra forma con angular
+[ngModel] escuchar
+[(ngModel)] se escucha y se emite el evento y ese evento que caiga en la propiedad nuevo nombre
+
+y este es el consepto de to way data bindig es decir tanto emite como recibe eventos
+o propiedades 
+
+pipes sirven para transformar visualmente la informacion
+por ejemplo que un numero salga con coma de miles
+
+______________________________
+
+divir el html en componentes
+por ejemplo separa la marte de mostrar cada personaje, cada linea podria ser un componente donde tenga su html correspondiente
+
+crear nuevo componente personajes dentro de la carpeta dbz
+
+ng g c dbz/pesonajes
+
+no hace falta importarlo en el moduelo, porque este componente solo se va a utilizar cuando se imprima el html component
+se deberia agregar este componente en el module de main page y no en el app.module
+
+y se agrega el app-personajes osea se llama al modulo correspondiente en el html principal del componente main page html
+
+y ahora en el componente personajes html hay que traer la lista de personajes que esta en el main page component
+tenemos que pasar atributos del componente padre main page al componente hijo personajes
+
+para hacerlo se usa el decorador @Input seguido de con la palabra clave del html entre [unnombre], en el hijo
+y en el html del padre ponemos [unnombre] lo que vamos a pasar al hijo
+y ese nombre se coloca en la clase ts hijo para referencia con el mismo nobre que figura 
+en el html entre []
+
+si quiero cambiarle de nombre le puedo cambiar el nombre ingresando un parametro en el input
+
+en el html lo que esta en [] es una propiedad que existe en el componente padre
+
+para que figure el tipo del obj en el hijo de lo que se pasa desde el padre 
+podemos crear una carpeta interfaces y ahi definir uan interface para crear el obj
+y asi seguir separando en pequañas parte el proyecto
+
+como las interface no son nada en lo que es javascript no hace falta importarlos en los 
+modulos
+
+la interfaz se importa en el padre e hijo
+
+______________________
+
+se quiere que el agregar no modiuqe la lista original
+osea la lista personajes
+sino que lo haga en el main component
+
+se quiere que cuando se haga click en agregar osea al component, se envie la accion al componente
+main page, para eso se agrega el decorador output en el agregar
+
+se le puede dar un nombre cualquiera como por ejemplo onNuevoPersonaje y es de  tipo
+Event emiter
+
+y se indica el tipo que emitimos, en este caso es un obj tipo Personaje
+con el emmiter
+
+en el html main page component
+agregamos el evento que estoy escuchando asociado al componente agregar
+que serriael evento onnuevoperonsaje el evento que esta escuchando
+
+y se define el metodo agregarNuevoPersonaje
+ en el html se para el atributo como $event
+
+y en la funcion agregar que se lo recibe se pone el argumento del tipo de obj que se pasa
+que seria de tipo personaje y se agrega a la lista
+
+de esta forma estamos pasando un obj creado en el componente hijo al componente padre
+
+y ahora este componente agregar lo puedo agregar en varios lugares, por eso sirve 
+separar asi los componentes
+
+en resumen, el output sirve para emitir eventos
+tiene sentido porque es un event emitter
+y se especifica el tipo de dato que se tiene que enviar
+
+cuando se importa fijarse que tiene que estar en la importacion 
+import { Component, EventEmitter, Input, Output} from '@angular/core'; del componente hijo
+y especificar el tipo que seria personaje
+
+_________
+para hacer utilizacion de debuger en visual studio code
+se presiona f5 y tira opciones
+y seleccionamos chrome preview
+abre el launch.json
+y tenemos la carpeta .vscode en el proyecto
+
+tenemos que pegar la url el host en el que se ejecuta la app
+
+y ahora si apreto f5, se abre la terminal 
+
+
+______________
+
+SERVICIOS
+
+se crear una nueva carpeta en la carpeta donde tenga los compoentes relacionados a uno
+y a la carpetra services le creo el archivo dbz.service.ts
+
+se define una clase, y la defirencia de esta clase service con las otras clases
+es por el decorador del tipo injectable
+es una clase que se va a poder injectar
+y para usar esta clase desde otro archivo, tengo que poner la palabra export
+
+y hay que referenciarlo en el modulo que tenga en esa carpeta, no al general
+seria el module dbz
+
+y se agrega el atributo en module 
+providers:[
+]
+ahi se van a agregar los servicios y van a funcionar como una unica
+instancia en ejecucion osea patron singleton
+
+cuando alguien lo requiea, se va a crear la nueva instancia
+
+y todo lo que tenemos en el component, los objetos creados, definciones
+metodos, deberian ir al servicio creado
+
+se crea el contructor del main page y se lo pone al argumento como private y tipo 
+DbzService, ahi puesto se conoce como injeccion de dependencia
+
+estamos inyectando el servico en el constructor del componente main page component
+
+y por la consola va a decir servicio inicializado
+
+y si quisiera intanciar el servicio desde otro componente se va a ver que solmante
+un solo mensaje aparece es decir se instancia una sola vez
+
+los servicios es un lugar centralizado donde vamos a tener la informacion
+
+y se pasa la lista de personajes que tenia en main component al service 
+
+la ide es que cuando tenga que manipular datos y obtener datos, utilice los archivos
+service, y no hacer manipulaciones en los componentes
+
+mediante un geter en el main componente puedeo obener la info desde service
+
+ahora va a refactorizar se quita el get
+
+en el componenten main page queda solamente los valores que quiero que queden por defecto
+cargado en las acajas de texto
+
+asi que en service va a estar todo 
+una convencion es colocar un guin bajo para indicar que una propiedad es privada
+al ponerlo como privado desde otra clase no voy a poder ver los metodos
+this.dbzService.
+
+
+
+
+
+_______________
+
+...this._lista
+es el operador spread
+separa cada uno de los elementos independientes que tiene el arreglo
+
+se define el metodo en el servicio, y se lo llama desde el personnaje components
+
+en el componente agregar ya no se esta emitiendo nada poque ahora esta en el service
+lo de agregar, ahora en el componente solo llama al servicio
+
+es mejor trabajr con servicios, para no tener que hacer lo de emitir eventos desde el componente
+
+
+ahora si tuvieramos que hacer lo mismo con los personajes desde otro componente, podemos llamar al servicio correspondiente que 
+tiene la informacion para hacerlo
+podemos disponer de la informacion, sin importar desde que componente lo necesite
+
+______
+
+PARA RECONSTRUIR LA APLICACION SE HACE
+
+npm install
+
+para que instale todos los paquetes y quede funcionando de nuevo cuando se hace un clone
+
+para generar el dist para produccion
+ng build --prod
+
+polyfills son funciones para que pueda correr la applicacion en cualqueir navegador web
+
+el hash que genera despues del punto de cada archivo que genera
+es porque par que el navegador web se de cuenta de que es otro archivo nuevo
+y que el cache tiene que actualizarse para la nueva version de la app
+
+el hash es para que se de cuenta el navegador de que se actualizo la app
+
+
+
+
+
+
 

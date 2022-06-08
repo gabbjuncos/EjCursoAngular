@@ -15,6 +15,15 @@ export class DbzService{
         }
       ];
 
+    get personajes():Personaje[]{
+      return [...this._personajes];
+    }
+    // añadir personaje al arreglo
+    agregarPersonaje(personaje: Personaje){
+      this._personajes.push(personaje);
+
+    }
+
     constructor(){
         console.log('Servicio inicializado');
     }
